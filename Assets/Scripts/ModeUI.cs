@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -9,21 +10,18 @@ public class ModeUI : MonoBehaviour
 
     [SerializeField]
     Button _stageModeButton;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private void Start()
+
+    public void AddTimeClickEvent(UnityAction clickCallback)
     {
-        _timeAttackButton.onClick.AddListener(OnclickTimeAttackMode);
-        _stageModeButton.onClick.AddListener(OnclickStageMode);
+        _timeAttackButton.onClick.AddListener(clickCallback);
     }
 
-    private void OnclickTimeAttackMode()
+    public void AddStageClickEvent(UnityAction clickCallback)
     {
-        Debug.Log("OnclickTimeAttackMode");
-        SceneManager.LoadScene("GameScene");
+        _stageModeButton.onClick.AddListener(clickCallback);
     }
 
-    private void OnclickStageMode()
-    {
 
-    }
+
+
 }
